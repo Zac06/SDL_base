@@ -7,13 +7,19 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
+                "-Iinclude",
+
                 "${cwd}/src/*.cpp",
+                "${cwd}/src/base_elements/*.cpp",
+                //"${cwd}/src/specific_elements/*.cpp",
+                "${cwd}/src/rendering/*.cpp",
 
                 "-o",
                 "${cwd}/bin/SDL_base",
                 "-m64",
                 "-Wall",
-                "-Iinclude",
+                
+
                 "-lSDL2main",
                 "-lSDL2",
                 "-lSDL2_image",

@@ -9,8 +9,8 @@
 #include<string>
 #include<queue>
 
-#include "entity.hpp"
-#include "fontcache.hpp"
+#include "base_elements/entity.hpp"
+#include "rendering/fontcache.hpp"
 
 using namespace std;
 

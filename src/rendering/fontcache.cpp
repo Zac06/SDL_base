@@ -1,4 +1,4 @@
-#include "fontcache.hpp"
+#include "rendering/fontcache.hpp"
 
 fontcache::fontcache(TTF_Font* p_f, int p_font_size, SDL_Color p_color, SDL_Renderer* p_rend)
     :char_textures(256, NULL), font_size(p_font_size), font(p_f), color(p_color)

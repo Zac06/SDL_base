@@ -1,4 +1,4 @@
-#include "entity.hpp"
+#include "base_elements/entity.hpp"
 
 entity::entity(double p_x, double p_y, SDL_Texture* p_tex)
     :x(p_x), y(p_y), tex(p_tex)

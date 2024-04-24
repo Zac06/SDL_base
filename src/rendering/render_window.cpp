@@ -1,4 +1,4 @@
-#include "render_window.hpp"
+#include "rendering/render_window.hpp"
 
 render_window::render_window(string p_title, int p_w, int p_h)
     :window(NULL), renderer(NULL), running(true),
