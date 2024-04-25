@@ -3,6 +3,11 @@
 entity::entity(double p_x, double p_y, SDL_Texture* p_tex)
     :x(p_x), y(p_y), tex(p_tex)
 {
+    int f_w, f_h;
+
+    SDL_QueryTexture(p_tex, NULL, NULL, &f_w, &f_h);
+    w=f_w;
+    h=f_h;
     rotation=0;
     rot_center={0,0};
 }
