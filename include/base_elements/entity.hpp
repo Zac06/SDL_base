@@ -10,6 +10,7 @@
 
 using namespace std;
 
+/// @brief This class uses a texture and its position to render everything it needs.
 class entity {
     public:
         entity(double p_x, double p_y, SDL_Texture* p_tex);

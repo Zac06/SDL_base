@@ -57,7 +57,7 @@ int main(int argc, char** argv){
     entity prova_ent(0,0,20,20,prova);
 
     while(window.is_running()){                         //while the window is still running
-        while(SDL_PollEvent(&event)){
+        while(SDL_PollEvent(&event)){                   //handle events. Need a better way. Maybe integrate it inside render_window.
             switch(event.type){
                 case SDL_QUIT:{
                     window.set_running(false);
