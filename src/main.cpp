@@ -67,6 +67,9 @@ int main(int argc, char** argv){
                     if(event.key.keysym.sym=='p'){
                         window.play_sound(provasuono);
                     }
+                    if(event.key.keysym.sym == 'g'){
+                        window.render_text_fc(provafc,"tasto rilasciato",100,270);
+                    }
                     break;
                 }
             }
@@ -81,7 +84,7 @@ int main(int argc, char** argv){
         window.render_entity(prova_ent);                //renders an entity
         window.render_text(provafont, "prova ttf\nprova capolinea", (SDL_Color){255,255,255,255}, 100,30);      //renders text using TTF rendering (heavier, but font is usually sharper)
         window.render_text_fc(provafc, "prova fontcache\nprova capolinea fontcache", 100, 100);                 //renders text using fontcache (lighter)
-        window.render_text(provafont, "prova 1",(SDL_Color){255,255,255,255}, 100,270);
+        //window.render_text(provafont, "prova 1",(SDL_Color){255,255,255,255}, 100,270);
         window.display();                       //displays everything that has been put in the renderer
     }
 
