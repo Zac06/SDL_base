@@ -5,7 +5,7 @@ entity::entity(double p_x, double p_y, SDL_Texture* p_tex)
 {
     int f_w, f_h;
 
-    SDL_QueryTexture(p_tex, NULL, NULL, &f_w, &f_h);
+    SDL_QueryTexture(p_tex, NULL, NULL, &f_w, &f_h);    //detect width and length of the texture
     w=f_w;
     h=f_h;
     rotation=0;
