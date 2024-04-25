@@ -57,6 +57,11 @@ int main(int argc, char** argv){
     entity prova_ent(0,0,20,20,prova);
 
     while(window.is_running()){                         //while the window is still running
+        window.clear();    
+        //window.clear((SDL_Color){255,0,0,128});
+        //refreshes the screen. Can take a color as parameter (background color)
+
+
         while(SDL_PollEvent(&event)){                   //handle events. Need a better way. Maybe integrate it inside render_window.
             switch(event.type){
                 case SDL_QUIT:{
@@ -75,9 +80,7 @@ int main(int argc, char** argv){
             }
         }
 
-        //window.clear((SDL_Color){255,0,0,128});
-        window.clear();                                 //refreshes the screen. Can take a color as parameter (background color)
-
+        
         //window.render_texture(prova, 0, 0);
         //window.render_texture_ultra(prova, 0, 0, (float)1.0, (float)45.0);
         
