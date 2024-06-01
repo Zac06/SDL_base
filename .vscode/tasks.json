@@ -18,7 +18,6 @@
                 "${cwd}/bin/SDL_base",
                 "-m64",
                 "-Wall",
-                
 
                 "-lSDL2main",
                 "-lSDL2",

@@ -8,6 +8,7 @@
 #include "rendering/render_window.hpp"
 #include "base_elements/entity.hpp"
 #include "rendering/fontcache.hpp"
+#include "rendering/event_mgr.hpp"
 
 using namespace std;
 
@@ -48,39 +49,31 @@ int main(int argc, char** argv){
     }
 
     render_window window("SDL_base", 640, 480);                         //initializes the window and the renderer
-    SDL_Event event;
     SDL_Texture* prova=window.load_texture("../res/gfx/prova.png");     //test textures, fonts, entities, sounds
     TTF_Font* provafont=window.load_font("../res/font/maldini.otf", 30);
     fontcache provafc(provafont, 30, (SDL_Color){255,255,255,255}, window.get_renderer());
-    Mix_Chunk* provasuono=window.load_sound("../res/sfx/suono.wav");
+    //Mix_Chunk* provasuono=window.load_sound("../res/sfx/suono.wav");
 
     entity prova_ent(0,0,20,20,prova);
 
+    event_mgr eventmanager;
+
     while(window.is_running()){                         //while the window is still running
-        window.clear();    
+        window.clear();                                 //refreshes the screen. Might take a color as parameter (background color)
         //window.clear((SDL_Color){255,0,0,128});
-        //refreshes the screen. Can take a color as parameter (background color)
-
-
-        while(SDL_PollEvent(&event)){                   //handle events. Need a better way. Maybe integrate it inside render_window.
-            switch(event.type){
-                case SDL_QUIT:{
-                    window.set_running(false);
-                    break;
-                }
-                case SDL_KEYDOWN:{
-                    if(event.key.keysym.sym=='p'){
-                        window.play_sound(provasuono);
-                    }
-                    if(event.key.keysym.sym == 'g'){
-                        window.render_text_fc(provafc,"tasto rilasciato",100,270);
-                    }
-                    break;
-                }
-            }
+        
+        eventmanager.update();                          //refreshes the events. While with a continuous polling of events you could manage one event at a time, 
+                                                        //and it was lost before you could go on with the other, now it is refreshed at request and all the pumped
+                                                        //events are available until the next
+        
+        if(eventmanager.get_event(SDL_QUIT).status==true){
+            window.set_running(false);
         }
 
-        
+        if(eventmanager.iskeypress(SDLK_g)&&eventmanager.iskeypress(SDLK_h)){   //support for multiple keyboard presses
+            window.render_text_fc(provafc, "AKUNAMATATARAGAZZI", 100, 150);
+        }
+
         //window.render_texture(prova, 0, 0);
         //window.render_texture_ultra(prova, 0, 0, (float)1.0, (float)45.0);
         
