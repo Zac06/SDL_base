@@ -9,6 +9,7 @@
 #include "base_elements/entity.hpp"
 #include "rendering/fontcache.hpp"
 #include "rendering/event_mgr.hpp"
+#include "base_elements/gui_element.hpp"
 
 using namespace std;
 

@@ -11,7 +11,7 @@
 
                 "${cwd}/src/*.cpp",
                 "${cwd}/src/base_elements/*.cpp",
-                //"${cwd}/src/specific_elements/*.cpp",
+                "${cwd}/src/gui_elements/*.cpp",
                 "${cwd}/src/rendering/*.cpp",
 
                 "-o",
