@@ -23,13 +23,24 @@ class gui_element {
         void set_state(int p_state);
         int get_state();
 
-        virtual void update()=0;        //pure virtual method (equivalent of abstract)
+        virtual void update()=0;        //pure virtual method (equivalent of abstract) (updates state)
+        SDL_Texture* get_current_state_texture();
 
-    private:
+        void disable();
+        void enable();
+
+        int get_x();
+        void set_x(int p_x);
+        int get_y();
+        void set_y(int p_y);
+
+    protected:
         SDL_Texture* tex_normal;
         SDL_Texture* tex_hover;
         SDL_Texture* tex_active;
         SDL_Texture* tex_disabled;
+
+        SDL_Texture* current_state_texture;
 
         int state;
         

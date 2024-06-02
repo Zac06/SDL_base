@@ -238,6 +238,10 @@ void render_window::render_entity(entity& p_ent){       //render the texture of 
     render_texture_ultra2(p_ent.get_tex(), p_ent.get_x(), p_ent.get_y(), p_ent.get_w(), p_ent.get_h(), p_ent.get_scale(), p_ent.get_rotation(), p_ent.get_rot_center());
 }
 
+void render_window::render_gui_element(gui_element& p_gui_el){
+    render_texture(p_gui_el.get_current_state_texture(), p_gui_el.get_x(), p_gui_el.get_y());
+}
+
 void render_window::render_text(TTF_Font* font, string text, SDL_Color color, int destx, int desty){
     SDL_Surface* tmp_surface=TTF_RenderText_Solid_Wrapped(font, text.c_str(), color,0);     //copy texture to surface
     SDL_Texture* tmp_tex(SDL_CreateTextureFromSurface(renderer, tmp_surface));              //transform surface into texture

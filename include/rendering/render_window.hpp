@@ -11,6 +11,7 @@
 
 #include "base_elements/entity.hpp"
 #include "rendering/fontcache.hpp"
+#include "base_elements/gui_element.hpp"
 
 using namespace std;
 
@@ -154,6 +155,10 @@ class render_window{
         /// @brief Renders an entity using its inner attributes.
         /// @param p_ent Entity to render.
         void render_entity(entity& p_ent);
+
+        /// @brief Renders a subclass instance of gui_element using its inner attributes.
+        /// @param p_gui_el Gui element to render.
+        void render_gui_element(gui_element& p_gui_el);
 
         /// @brief Plays a sound.
         /// @param p_sound Sound to play. Must be loaded.
