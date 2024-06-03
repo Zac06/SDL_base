@@ -43,11 +43,20 @@ class event_status {
 
 class event_mgr {
     public:
+        /// @brief Default constructor.
         event_mgr();
 
+        /// @brief Updates the events and puts them into a table.
         void update();
+
+        /// @brief Searches for an event based on its ID and returns its state and data.
+        /// @param p_event_id ID that you want to search.
+        /// @return A struct containing the state and the data.
         ev_ret_type get_event(int p_event_id);
 
+        /// @brief Returns the state of a keyboard key based on its virtual keycode.
+        /// @param p_vkeycode Virtual keycode to search. It must be between the SDLK codes.
+        /// @return Returns state of the key.
         bool iskeypress(int p_vkeycode);
         
     private:
