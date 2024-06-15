@@ -51,7 +51,7 @@ int main(int argc, char** argv){
     }
 
     render_window window("SDL_base", 640, 480);                         //initializes the window and the renderer
-    event_mgr eventmanager;
+    //event_mgr eventmanager;
 
     SDL_Texture* prova=window.load_texture("../res/gfx/prova.png");     //test textures, fonts, entities, sounds
     TTF_Font* provafont=window.load_font("../res/font/maldini.otf", 30);
@@ -65,36 +65,35 @@ int main(int argc, char** argv){
     SDL_Texture* provabtn_active=window.load_texture("../res/gfx/btn_active.png");
     SDL_Texture* provabtn_disable=window.load_texture("../res/gfx/btn_disable.png");
 
-    gui_button prova_btn(provabtn_normal, provabtn_hover, provabtn_active, provabtn_disable, eventmanager, {300, 300});      //a gui button!!
-    
-    //gui_button btn(NULL, eventmanager, {0,0});
+    gui_button prova_btn(provabtn_normal, provabtn_hover, provabtn_active, provabtn_disable, {300, 300});      //a gui button!!
+
+    event_mgr::init();
 
     while(window.is_running()){                         //while the window is still running
         window.clear();                                 //refreshes the screen. Might take a color as parameter (background color)
         //window.clear((SDL_Color){255,0,0,128});
         
-        eventmanager.update();                          //refreshes the events. While with a continuous polling of events you could manage one event at a time, 
+        event_mgr::update();                          //refreshes the events. While with a continuous polling of events you could manage one event at a time, 
                                                         //and it was lost before you could go on with the other, now it is refreshed at request and all the pumped
-                                                        //events are available until the next
+                                                        //events are available until the next refresh
         
         prova_btn.update();                             //invokes abstract method to update state
         if(prova_btn.get_state()==GUI_STATE_ACTIVE){    //some jiggling with buttons
             prova_btn.disable();
         }
 
-
-        if(eventmanager.get_event(SDL_QUIT).status==true){
+        if(event_mgr::get_event(SDL_QUIT).status==true){
             window.set_running(false);
         }
 
-        if(eventmanager.iskeypress(SDLK_g)&&eventmanager.iskeypress(SDLK_h)){   //support for multiple keyboard presses
+        if(event_mgr::iskeypress(SDLK_g)&&event_mgr::iskeypress(SDLK_h)){   //support for multiple keyboard presses
             window.render_text_fc(provafc, "AKUNAMATATARAGAZZI", 100, 150);
         }
 
         //window.render_texture(prova, 0, 0);
         //window.render_texture_ultra(prova, 0, 0, (float)1.0, (float)45.0);
         
-        //window.render_entity(prova_ent);                //renders an entity
+        window.render_entity(prova_ent);                //renders an entity
         window.render_gui_element(prova_btn);
         window.render_text(provafont, "prova ttf\nprova capolinea", (SDL_Color){255,255,255,255}, 100,30);      //renders text using TTF rendering (heavier, but font is usually sharper)
         window.render_text_fc(provafc, "prova fontcache\nprova capolinea fontcache", 100, 100);                 //renders text using fontcache (lighter)

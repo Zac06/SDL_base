@@ -1,16 +1,16 @@
 #include "gui_elements/gui_button.hpp"
 
-gui_button::gui_button(SDL_Texture* p_tex_normal, event_mgr& p_events, SDL_Point p_coords)
-    :gui_element(p_tex_normal, p_events, p_coords)
+gui_button::gui_button(SDL_Texture* p_tex_normal, SDL_Point p_coords)
+    :gui_element(p_tex_normal, p_coords)
 {}
 
-gui_button::gui_button(SDL_Texture* p_tex_normal, SDL_Texture* p_tex_active, event_mgr& p_events, SDL_Point p_coords)
-    :gui_element(p_tex_normal, p_tex_active, p_events, p_coords)
+gui_button::gui_button(SDL_Texture* p_tex_normal, SDL_Texture* p_tex_active, SDL_Point p_coords)
+    :gui_element(p_tex_normal, p_tex_active, p_coords)
 {}
 
 
-gui_button::gui_button(SDL_Texture* p_tex_normal, SDL_Texture* p_tex_hover, SDL_Texture* p_tex_active, SDL_Texture* p_tex_disabled, event_mgr& p_events, SDL_Point p_coords)
-    :gui_element(p_tex_normal, p_tex_hover, p_tex_active, p_tex_disabled, p_events, p_coords)
+gui_button::gui_button(SDL_Texture* p_tex_normal, SDL_Texture* p_tex_hover, SDL_Texture* p_tex_active, SDL_Texture* p_tex_disabled, SDL_Point p_coords)
+    :gui_element(p_tex_normal, p_tex_hover, p_tex_active, p_tex_disabled, p_coords)
 {}
 
 void gui_button::update(){
@@ -25,8 +25,8 @@ void gui_button::update(){
     SDL_GetMouseState(&mousex, &mousey);
 
     if(mousex>=x&&mousex<=x+w&&mousey>=y&&mousey<=y+h){
-        ev_ret_type mousequerydown=events.get_event(SDL_MOUSEBUTTONDOWN);
-        ev_ret_type mousequeryup=events.get_event(SDL_MOUSEBUTTONUP);
+        ev_ret_type mousequerydown=event_mgr::get_event(SDL_MOUSEBUTTONDOWN);
+        ev_ret_type mousequeryup=event_mgr::get_event(SDL_MOUSEBUTTONUP);
 
         if(state!=GUI_STATE_ACTIVE&&mousequerydown.status&&mousequerydown.event.button.button==SDL_BUTTON_LEFT){
             state=GUI_STATE_ACTIVE;

@@ -20,14 +20,14 @@ class gui_element {
         /// @param p_tex_normal Texture at a normal state.
         /// @param p_events Main event manager.
         /// @param p_coords X and Y coordinates of the texture.
-        gui_element(SDL_Texture* p_tex_normal, event_mgr& p_events, SDL_Point p_coords);
+        gui_element(SDL_Texture* p_tex_normal, SDL_Point p_coords);
 
         /// @brief Mid-length constructor.
         /// @param p_tex_normal Texture in a normal state.
         /// @param p_tex_active Texture in an active state (while cursor is over and mouse pressed)
         /// @param p_events Main event manager.
         /// @param p_coords X and Y coordinates os the textures.
-        gui_element(SDL_Texture* p_tex_normal, SDL_Texture* p_tex_active, event_mgr& p_events, SDL_Point p_coords);
+        gui_element(SDL_Texture* p_tex_normal, SDL_Texture* p_tex_active, SDL_Point p_coords);
 
         /// @brief Full-length construtor.
         /// @param p_tex_normal Texture in a normal state.
@@ -36,7 +36,7 @@ class gui_element {
         /// @param p_tex_disabled Texture in a disabled state
         /// @param p_events Main event manager.
         /// @param p_coords X and Y coordinates of the texture.
-        gui_element(SDL_Texture* p_tex_normal, SDL_Texture* p_tex_hover, SDL_Texture* p_tex_active, SDL_Texture* p_tex_disabled, event_mgr& p_events, SDL_Point p_coords);
+        gui_element(SDL_Texture* p_tex_normal, SDL_Texture* p_tex_hover, SDL_Texture* p_tex_active, SDL_Texture* p_tex_disabled, SDL_Point p_coords);
 
         /// @brief Sets another state.
         /// @param p_state State to set.
@@ -84,8 +84,6 @@ class gui_element {
         SDL_Texture* current_state_texture;
 
         int state;
-        
-        event_mgr& events;
         
         int x,y;
 
