@@ -67,13 +67,13 @@ int main(int argc, char** argv){
 
     gui_button prova_btn(provabtn_normal, provabtn_hover, provabtn_active, provabtn_disable, {300, 300});      //a gui button!!
 
-    event_mgr::init();
+    event_mgr::init();                                  //initialize event_mgr attributes
 
     while(window.is_running()){                         //while the window is still running
         window.clear();                                 //refreshes the screen. Might take a color as parameter (background color)
-        //window.clear((SDL_Color){255,0,0,128});
+        //window.clear((SDL_Color){255,0,0,0});
         
-        event_mgr::update();                          //refreshes the events. While with a continuous polling of events you could manage one event at a time, 
+        event_mgr::update();                            //refreshes the events. While with a continuous polling of events you could manage one event at a time, 
                                                         //and it was lost before you could go on with the other, now it is refreshed at request and all the pumped
                                                         //events are available until the next refresh
         
@@ -98,7 +98,7 @@ int main(int argc, char** argv){
         window.render_text(provafont, "prova ttf\nprova capolinea", (SDL_Color){255,255,255,255}, 100,30);      //renders text using TTF rendering (heavier, but font is usually sharper)
         window.render_text_fc(provafc, "prova fontcache\nprova capolinea fontcache", 100, 100);                 //renders text using fontcache (lighter)
         //window.render_text(provafont, "prova 1",(SDL_Color){255,255,255,255}, 100,270);
-        window.display();                       //displays everything that has been put in the renderer
+        window.display();                               //displays everything that has been put in the renderer
     }
 
     close();

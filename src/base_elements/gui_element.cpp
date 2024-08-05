@@ -5,6 +5,7 @@ gui_element::gui_element(SDL_Texture* p_tex_normal, SDL_Point p_coords)
     tex_hover(p_tex_normal), 
     tex_active(p_tex_normal), 
     tex_disabled(p_tex_normal),
+    current_state_texture(p_tex_normal),
     state(0)
 {
     x=p_coords.x;
@@ -16,6 +17,7 @@ gui_element::gui_element(SDL_Texture* p_tex_normal, SDL_Texture* p_tex_active, S
     tex_hover(p_tex_normal), 
     tex_active(p_tex_active), 
     tex_disabled(p_tex_normal),
+    current_state_texture(p_tex_normal),
     state(0)
 {
     x=p_coords.x;
@@ -27,6 +29,7 @@ gui_element::gui_element(SDL_Texture* p_tex_normal, SDL_Texture* p_tex_hover, SD
     tex_hover(p_tex_hover), 
     tex_active(p_tex_active), 
     tex_disabled(p_tex_disabled),
+    current_state_texture(p_tex_normal),
     state(0)
 {
     x=p_coords.x;
