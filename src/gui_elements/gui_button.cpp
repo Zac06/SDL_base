@@ -20,6 +20,7 @@ void gui_button::update(){
 
     int mousex, mousey;
     int w, h;
+    bool last_state=state;
 
     SDL_QueryTexture(current_state_texture, NULL, NULL, &w, &h);
     SDL_GetMouseState(&mousex, &mousey);
@@ -37,6 +38,10 @@ void gui_button::update(){
         }
     }else{
         state=GUI_STATE_NORMAL;
+    }
+
+    if(state==last_state){
+        return;
     }
 
     switch(state){
