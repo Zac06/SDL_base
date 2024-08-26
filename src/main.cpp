@@ -79,7 +79,7 @@ int main(int argc, char** argv){
         
         prova_btn.update();                             //invokes abstract method to update state
         if(prova_btn.get_state()==GUI_STATE_ACTIVE){    //some jiggling with buttons
-            prova_btn.disable();
+            //prova_btn.disable();
         }
 
         if(event_mgr::get_event(SDL_QUIT).status==true){
