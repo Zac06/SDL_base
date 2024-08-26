@@ -48,7 +48,7 @@ void gui_button::update(){
         state=GUI_STATE_NORMAL;
     }
 
-    cerr<<state<<";"<<last_state<<"\n";
+    //cerr<<state<<";"<<last_state<<"\n";
 
     if(state!=last_state){
         switch(state){
