@@ -8,12 +8,19 @@
 #include<iostream>
 #include<string>
 #include<queue>
+#include<sstream>
+#include<vector>
 
 #include "base_elements/entity.hpp"
 #include "rendering/fontcache.hpp"
 #include "base_elements/gui_element.hpp"
 
 using namespace std;
+
+enum {
+    TXT_CENTER_HORIZ=0b1,
+    TXT_CENTER_VERT=0b10
+};
 
 class render_window{
     public:
@@ -142,7 +149,7 @@ class render_window{
         /// @param text Text to render.
         /// @param destx X position of the text to render
         /// @param desty Y position of the text to render
-        void render_text_fc(fontcache& p_fc, string text, int destx, int desty);
+        void render_text_fc(fontcache& p_fc, string text, int destx, int desty, int center=0);
 
         /// @brief Renders some text to the screen using the fontcache.
         /// @param p_fc fontcache to use to render the characters.
@@ -154,7 +161,7 @@ class render_window{
 
         /// @brief Renders an entity using its inner attributes.
         /// @param p_ent Entity to render.
-        void render_entity(entity& p_ent);
+        void render_entity(entity& p_ent, bool p_invert_y=true);
 
         /// @brief Renders a subclass instance of gui_element using its inner attributes.
         /// @param p_gui_el Gui element to render.
@@ -177,6 +184,15 @@ class render_window{
 
         /// @brief shows the rendering buffer contents to the screen (updates it)
         void display();
+
+        /// @brief returns the width of a line of text, until the next newline.
+        int get_text_width(string& p_str, fontcache& p_fc);
+
+        int get_win_width();
+
+        int get_win_height();
+
+        void append_loaded_tex(SDL_Texture* p_tex);
     private:
         SDL_Window* window;
         SDL_Renderer* renderer;

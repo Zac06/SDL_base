@@ -97,6 +97,8 @@ int main(int argc, char** argv){
         window.render_gui_element(prova_btn);
         window.render_text(provafont, "prova ttf\nprova capolinea", (SDL_Color){255,255,255,255}, 100,30);      //renders text using TTF rendering (heavier, but font is usually sharper)
         window.render_text_fc(provafc, "prova fontcache\nprova capolinea fontcache", 100, 100);                 //renders text using fontcache (lighter)
+        
+        window.render_text_fc(provafc, "ABC\nDEFGH\nIJK", window.get_win_width()/2, window.get_win_height()/2, TXT_CENTER_HORIZ|TXT_CENTER_VERT);
         //window.render_text(provafont, "prova 1",(SDL_Color){255,255,255,255}, 100,270);
         window.display();                               //displays everything that has been put in the renderer
     }
